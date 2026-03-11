@@ -18,4 +18,4 @@ jobs:
           -H "Content-Type: application/json" \
           -d '{"source":"github-action"}'
 
-# trigger scheduler
+# trigger scheduler, automater
