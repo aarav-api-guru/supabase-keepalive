@@ -2,7 +2,7 @@ name: Supabase Keep Alive
 
 on:
   schedule:
-    - cron: "0 3 * * 0"
+    - cron: "0 3 */6 * *"
   workflow_dispatch:
 
 jobs:
@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Ping Supabase
+      - name: Insert keepalive row
         run: |
-          curl https://scksiytwmllpcliuguhv.supabase.co/rest/v1/
+          curl -X POST "https://scksiytwmllpcliuguhv.supabase.co/rest/v1/keepalive_logs" \
+          -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNja3NpeXR3bWxscGNsaXVndWh2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzUzNzA3NjIsImV4cCI6MjA1MDk0Njc2Mn0._D0H6vJfBHVGkIWrpsK8K_uGl0dnYT13Ag8e_Mcp7Hw" \
+          -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNja3NpeXR3bWxscGNsaXVndWh2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzUzNzA3NjIsImV4cCI6MjA1MDk0Njc2Mn0._D0H6vJfBHVGkIWrpsK8K_uGl0dnYT13Ag8e_Mcp7Hw" \
+          -H "Content-Type: application/json" \
+          -d '{"source":"github-action"}'
