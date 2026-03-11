@@ -17,3 +17,5 @@ jobs:
           -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNja3NpeXR3bWxscGNsaXVndWh2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzUzNzA3NjIsImV4cCI6MjA1MDk0Njc2Mn0._D0H6vJfBHVGkIWrpsK8K_uGl0dnYT13Ag8e_Mcp7Hw" \
           -H "Content-Type: application/json" \
           -d '{"source":"github-action"}'
+
+# trigger scheduler
