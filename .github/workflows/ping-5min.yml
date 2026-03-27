@@ -1,0 +1,38 @@
+name: Supabase Keep Alive (5 min test)
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping DB 1
+        run: |
+          echo "Pinging DB 1 at $(date)"
+          curl -i -X POST "${{ secrets.SUPABASE_URL_1 }}/rest/v1/keepalive_logs" \
+          -H "apikey: ${{ secrets.SUPABASE_ANON_KEY_1 }}" \
+          -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY_1 }}" \
+          -H "Content-Type: application/json" \
+          -d '{"source":"github-db1"}'
+
+      - name: Ping DB 2
+        run: |
+          echo "Pinging DB 2 at $(date)"
+          curl -i -X POST "${{ secrets.SUPABASE_URL_2 }}/rest/v1/keepalive_logs" \
+          -H "apikey: ${{ secrets.SUPABASE_ANON_KEY_2 }}" \
+          -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY_2 }}" \
+          -H "Content-Type: application/json" \
+          -d '{"source":"github-db2"}'
+
+      - name: Ping DB 3
+        run: |
+          echo "Pinging DB 3 at $(date)"
+          curl -i -X POST "${{ secrets.SUPABASE_URL_3 }}/rest/v1/keepalive_logs" \
+          -H "apikey: ${{ secrets.SUPABASE_ANON_KEY_3 }}" \
+          -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY_3 }}" \
+          -H "Content-Type: application/json" \
+          -d '{"source":"github-db3"}'
