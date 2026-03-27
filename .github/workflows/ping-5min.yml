@@ -1,5 +1,4 @@
-name: Supabase Keep Alive (5 min test)
-
+name: Supabase Keep Alive 3 DB.
 on:
   schedule:
     - cron: "*/5 * * * *"
