@@ -12,24 +12,27 @@ jobs:
     steps:
       - name: Ping DB 1
         run: |
-          curl -X POST "${{ secrets.SUPABASE_URL_1 }}/rest/v1/keepalive_logs" \
+          curl --fail-with-body -X POST "${{ secrets.SUPABASE_URL_1 }}/rest/v1/keepalive_logs" \
           -H "apikey: ${{ secrets.SUPABASE_ANON_KEY_1 }}" \
           -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY_1 }}" \
           -H "Content-Type: application/json" \
+          -H "Prefer: return=representation" \
           --data-raw '{"source":"github-db1"}'
 
       - name: Ping DB 2
         run: |
-          curl -X POST "${{ secrets.SUPABASE_URL_2 }}/rest/v1/keepalive_logs" \
+          curl --fail-with-body -X POST "${{ secrets.SUPABASE_URL_2 }}/rest/v1/keepalive_logs" \
           -H "apikey: ${{ secrets.SUPABASE_ANON_KEY_2 }}" \
           -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY_2 }}" \
           -H "Content-Type: application/json" \
+          -H "Prefer: return=representation" \
           --data-raw '{"source":"github-db2"}'
 
       - name: Ping DB 3
         run: |
-          curl -X POST "${{ secrets.SUPABASE_URL_3 }}/rest/v1/keepalive_logs" \
+          curl --fail-with-body -X POST "${{ secrets.SUPABASE_URL_3 }}/rest/v1/keepalive_logs" \
           -H "apikey: ${{ secrets.SUPABASE_ANON_KEY_3 }}" \
           -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY_3 }}" \
           -H "Content-Type: application/json" \
+          -H "Prefer: return=representation" \
           --data-raw '{"source":"github-db3"}'
