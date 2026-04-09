@@ -16,7 +16,6 @@ jobs:
           -H "apikey: ${{ secrets.SUPABASE_ANON_KEY_1 }}" \
           -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY_1 }}" \
           -H "Content-Type: application/json" \
-          -H "Prefer: return=representation" \
           --data-raw '{"source":"github-db1"}'
 
       - name: Ping DB 2
@@ -25,7 +24,6 @@ jobs:
           -H "apikey: ${{ secrets.SUPABASE_ANON_KEY_2 }}" \
           -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY_2 }}" \
           -H "Content-Type: application/json" \
-          -H "Prefer: return=representation" \
           --data-raw '{"source":"github-db2"}'
 
       - name: Ping DB 3
@@ -34,5 +32,4 @@ jobs:
           -H "apikey: ${{ secrets.SUPABASE_ANON_KEY_3 }}" \
           -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY_3 }}" \
           -H "Content-Type: application/json" \
-          -H "Prefer: return=representation" \
           --data-raw '{"source":"github-db3"}'
